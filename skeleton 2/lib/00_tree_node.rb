@@ -58,22 +58,15 @@ class PolyTreeNode
         until queue.empty?
             front = queue.shift
             # front = queue.pop
-            begin
                 if front.value == target_value
                     return front
                 else
                     front.children.each do |child|
                         queue << child
                     end
-                    # queue.push(front.children)
                 end
-            rescue
-                raise 'error'
-            end
-              
-        end
+         end
         return nil
-
     end
 
     def inspect
