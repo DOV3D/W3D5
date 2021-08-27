@@ -37,15 +37,20 @@ class PolyTreeNode
         #check if self.value == target_value return self
         # iterate through children and call child.dfs(target_value) 
         #return nil
-        return nil if self.children.empty?
-        return self if self.value == target_value
-        @children.each do |child|
+        return self if value == target_value
+        children.each do |child|
             result = child.dfs(target_value)
             return result unless result.nil?
         end
 
         return nil
 
+    end
+
+    def bfs(target_value)
+        #create an array with self.value included thats going to be a queue FIFO
+        #start with self.value and compare to target_val == if correct return self
+        #else shovel the children of self into array and 
     end
 
     def inspect
