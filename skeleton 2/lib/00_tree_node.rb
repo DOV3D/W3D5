@@ -37,14 +37,24 @@ class PolyTreeNode
         #check if self.value == target_value return self
         # iterate through children and call child.dfs(target_value) 
         #return nil
-        return nil if self.nil?
+        return nil if self.children.empty?
         return self if self.value == target_value
-        self.children.each do |child|
-         result = child.dfs(target_value)
+        @children.each do |child|
+            result = child.dfs(target_value)
+            return result unless result.nil?
         end
+
         return nil
 
     end
+
+    def inspect
+        {value: value, 
+        children: children.map {|child| child.value}}.inspect
+
+    end
+
+
 
 
 
