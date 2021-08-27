@@ -48,9 +48,32 @@ class PolyTreeNode
     end
 
     def bfs(target_value)
-        #create an array with self.value included thats going to be a queue FIFO
-        #start with self.value and compare to target_val == if correct return self
+        #create an array with self
+        #included thats going to be a queue FIFO
+        #start with self.value and compare to target_value
+        #if correct return self
         #else shovel the children of self into array and 
+        queue = [self]
+        
+        until queue.empty?
+            front = queue.shift
+            # front = queue.pop
+            begin
+                if front.value == target_value
+                    return front
+                else
+                    front.children.each do |child|
+                        queue << child
+                    end
+                    # queue.push(front.children)
+                end
+            rescue
+                raise 'error'
+            end
+              
+        end
+        return nil
+
     end
 
     def inspect
